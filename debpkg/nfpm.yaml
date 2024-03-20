@@ -23,7 +23,7 @@ contents:
     group: root
 
 - src: keydesk-router/conf/nginx.conf
-  dst: /etc/nginx/nginx.conf
+  dst: /etc/nginx/nginx-dcapi.conf
   file_info:
     mode: 0644
     owner: root
