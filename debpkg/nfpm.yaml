@@ -1,0 +1,50 @@
+name: "vgkeydesk-router"
+arch: "all"
+platform: "linux"
+version: ${PACKAGE_VERSION}
+section: "default"
+priority: "optional"
+release: ${PACKAGE_RELEASE}
+
+provides:
+- vgkeydesk-router
+depends:
+- nginx-light
+
+maintainer: "Ingmund Ollson <ingmund@proton.me>"
+description: VPNGen keydesk API router
+vendor: "VPNGen"
+homepage: "http://vpngen.org"
+
+contents:
+- dst: /var/lib/dcapi
+  type: dir
+  file_info:
+    mode: 0711
+    owner: root
+    group: root
+
+- src: keydesk-router/conf/nginx.conf
+  dst: /etc/nginx/nginx.conf
+  file_info:
+    mode: 0644
+    owner: root
+    group: root
+
+- src: keydesk-router/conf/messages.conf
+  dst: /etc/nginx/sites-available/messages.conf
+  file_info:
+    mode: 0644
+    owner: root
+    group: root
+
+overrides:
+  deb:
+    scripts:
+      preinstall: /data/src/preinstall.sh
+      postinstall: /data/src/postinstall.sh
+      preremove: /data/src/preremove.sh
+      postremove: /data/src/postremove.sh
+
+deb:
+  compression: xz
