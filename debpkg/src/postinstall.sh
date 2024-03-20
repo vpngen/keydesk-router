@@ -2,14 +2,14 @@
 
 
 fixconf() {
-        if [ -d "/etc/nginx/nginx-dcapi.conf" ]; then
+        if [ -s "/etc/nginx/nginx-dcapi.conf" ]; then
                 # shellcheck disable=SC2012
                 inode1=$(ls -i "/etc/nginx/nginx.conf" | cut -d ' ' -f 1)
                 # shellcheck disable=SC2012
                 inode2=$(ls -i "/etc/nginx/nginx-dcapi.conf" | cut -d ' ' -f 1)
 
                 # Compare inode numbers
-                if [ "$inode1" = "$inode2" ]; then
+                if [ "$inode1" -eq "$inode2" ]; then
                         echo "The files share the same inode (are hard links to each other)."
                         echo "Nothing to do."
                 else
