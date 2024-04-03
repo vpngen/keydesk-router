@@ -37,7 +37,7 @@ fixconf() {
         fi
 
     	printf "\033[32m Reload the service unit from disk\033[0m\n"
-    	systemctl reload nginx ||:
+    	systemctl reload nginx || systemctl start nginx ||:
 }
 
 cleanInstall() {
