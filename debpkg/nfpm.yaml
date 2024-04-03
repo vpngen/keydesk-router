@@ -47,3 +47,5 @@ overrides:
 
 deb:
   compression: xz
+  fields:
+    Pre-Depends: nginx-common
