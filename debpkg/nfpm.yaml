@@ -8,6 +8,7 @@ release: ${PACKAGE_RELEASE}
 
 provides:
 - vgkeydesk-router
+depends:
 - nginx-light
 
 maintainer: "Ingmund Ollson <ingmund@proton.me>"
@@ -47,5 +48,3 @@ overrides:
 
 deb:
   compression: xz
-  fields:
-    Pre-Depends: nginx-common
